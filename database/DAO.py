@@ -18,13 +18,14 @@ class DAO:
         conn.close()
         return result
 
+
     @staticmethod
     def getAllArchi(idMap):
         conn = DBConnect.get_connection()
         cursor = conn.cursor(dictionary=True)
         result = []
         query = """SELECT eo.object_id as o1, eo2.object_id as o2, count(*) as peso
-                   FROM exhibition_object eo, exhibition_object eo2
+                   FROM exhibition_objects eo, exhibition_objects eo2
                    WHERE eo.exhibition_id = eo2.exhibition_id
                    and eo.object_id < eo2.object_id
                    GROUP BY eo.object_id, eo2.object_id

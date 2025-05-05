@@ -14,6 +14,13 @@ class Model:
         self._graph.add_nodes_from(self._nodes)
         self.addAllEdges()
 
+    def getInfoConnessa(self, idInput):
+        source = self._idMap[idInput]
+
+
+    def hasNode(self, idInput):
+        return idInput in self._idMap
+
     def addAllEdges(self):
         allEdges = DAO.getAllArchi(self._idMap)
         for e in allEdges:
