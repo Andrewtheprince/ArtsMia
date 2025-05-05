@@ -8,7 +8,10 @@ class Controller:
 
     def handleAnalizzaOggetti(self, e):
         self._model.buildGraph()
-        self._view.txt_result.controls.append(ft.Text(f"Grafo creato. Il grafo contiene {self._model.getNumNodes()} nodi e {self._model.getNumEdges()} archi."))
+        self._view.txt_result.controls.append(
+            ft.Text(f"Grafo creato. Il grafo contiene {self._model.getNumNodes()} nodi e {self._model.getNumEdges()} archi."))
+        self._view._txtIdOggetto.disabled = False
+        self._view._btnCompConnessa.disabled = False
         self._view.update_page()
 
     def handleCompConnessa(self,e):
@@ -31,5 +34,7 @@ class Controller:
             self._view.update_page()
             return
         infoConnessa = self._model.getInfoConnessa(idInput)
-
-
+        self._view.txt_result.controls.clear()
+        self._view.txt_result.controls.append(
+            ft.Text(f"La componente connessa che contiene il nodo {idInput} ha dimensione pari a {infoConnessa}"))
+        self._view.update_page()

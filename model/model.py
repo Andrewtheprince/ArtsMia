@@ -16,7 +16,8 @@ class Model:
 
     def getInfoConnessa(self, idInput):
         source = self._idMap[idInput]
-
+        dfsTree = nx.dfs_tree(self._graph, source)
+        return len(dfsTree.nodes())
 
     def hasNode(self, idInput):
         return idInput in self._idMap
